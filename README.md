@@ -7,15 +7,27 @@ This repository could be freely used for any purpose. If you like it, please sta
 YOLO Nano paper:
 [YOLO Nano: a Highly Compact You Only Look Once Convolutional Neural Network for Object Detection](https://arxiv.org/abs/1910.01271)
 
+The network structure of YOLO Nano:
+<p align="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/yolo_nano_network_structure.PNG" alt="FaceBoxes Performance" width="1024px">
+</p>
+
+
+The performance of YOLO Nano:
+<p align="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/yolonano_vs_tinyyolov2_vs_tinyyolov3.PNG" alt="FaceBoxes Performance" width="1024px">
+</p>
 
 
 
-### Compared to [Faceboxes](https://g), what has been changed 
 
 
 ### How to run this code base
-1) git clone  git@github.com:ardeal/FaceBoxes_VS2015_Python.git
-2) 
+0) make sure you have powerfull GPU computer and you are good at Python coding.
+1) git clone  git@github.com:ardeal/yolo_nano.git
+2) install Pytorch and necessary packages
+3) prepare validating images
+......
 
 
 
@@ -37,21 +49,3 @@ for 320*240 input image, the time needed is around 20-30ms
 <br>
 <br>
 <br>
-### Output of the code
-I tested a few images, and the output are followed:
-
-<p align="left">
-<img src="https://g_178.jpg" alt="FaceBoxes Performance" width="1024px">
-</p>
-
-
-<p align="left">
-<img src="https://g1.jpg" alt="FaceBoxes Performance" width="1024px">
-</p>
-
-
-
-<p align="left">
-<img src="https://1.jpg" alt="FaceBoxes Performance" width="1024px">
-</p>
-
