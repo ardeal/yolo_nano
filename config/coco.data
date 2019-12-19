@@ -1,0 +1,6 @@
+classes= 80
+train=C:/doc/datasets/COCO/trainvalno5k.txt
+valid=C:/doc/datasets/COCO/5k.txt
+names=data/coco.names
+backup=backup/
+eval=coco
