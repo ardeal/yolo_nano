@@ -3,6 +3,10 @@ This is my implementation of YOLO Nano with Pytorch. If you like it, please star
 This repository could be freely used for any purpose. If you like it, please star it.
 
 
+<H1> The code is not finished. Still ongoing </>
+
+
+
 ### Introduction
 YOLO Nano paper:
 [YOLO Nano: a Highly Compact You Only Look Once Convolutional Neural Network for Object Detection](https://arxiv.org/abs/1910.01271)

@@ -1,6 +1,6 @@
 from __future__ import division
 
-from models import *
+from network import *
 from utils.logger import *
 from utils.utils import *
 from utils.datasets import *
@@ -66,33 +66,11 @@ if __name__ == "__main__":
 
     # Get dataloader
     dataset = ListDataset(train_path, augment=True, multiscale=opt.multiscale_training)
-    dataloader = torch.utils.data.DataLoader(
-        dataset,
-        batch_size=opt.batch_size,
-        shuffle=True,
-        num_workers=opt.n_cpu,
-        pin_memory=True,
-        collate_fn=dataset.collate_fn,
-    )
+    dataloader = torch.utils.data.DataLoader(dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu, pin_memory=True, collate_fn=dataset.collate_fn,)
 
     optimizer = torch.optim.Adam(model.parameters())
 
-    metrics = [
-        "grid_size",
-        "loss",
-        "x",
-        "y",
-        "w",
-        "h",
-        "conf",
-        "cls",
-        "cls_acc",
-        "recall50",
-        "recall75",
-        "precision",
-        "conf_obj",
-        "conf_noobj",
-    ]
+    metrics = ["grid_size", "loss", "x", "y", "w", "h", "conf", "cls", "cls_acc", "recall50", "recall75", "precision", "conf_obj", "conf_noobj", ]
 
     for epoch in range(opt.epochs):
         model.train()
@@ -151,21 +129,8 @@ if __name__ == "__main__":
         if epoch % opt.evaluation_interval == 0:
             print("\n---- Evaluating Model ----")
             # Evaluate the model on the validation set
-            precision, recall, AP, f1, ap_class = evaluate(
-                model,
-                path=valid_path,
-                iou_thres=0.5,
-                conf_thres=0.5,
-                nms_thres=0.5,
-                img_size=opt.img_size,
-                batch_size=8,
-            )
-            evaluation_metrics = [
-                ("val_precision", precision.mean()),
-                ("val_recall", recall.mean()),
-                ("val_mAP", AP.mean()),
-                ("val_f1", f1.mean()),
-            ]
+            precision, recall, AP, f1, ap_class = evaluate(model, path=valid_path, iou_thres=0.5, conf_thres=0.5, nms_thres=0.5, img_size=opt.img_size, batch_size=8, )
+            evaluation_metrics = [ ("val_precision", precision.mean()), ("val_recall", recall.mean()), ("val_mAP", AP.mean()), ("val_f1", f1.mean()), ]
             # logger.list_of_scalars_summary(evaluation_metrics, epoch)
             # Print class APs and mAP
             ap_table = [["Index", "Class name", "AP"]]
