@@ -1,4 +1,4 @@
-from __future__ import division
+# from __future__ import division
 
 from network import *
 from utils.logger import *
@@ -25,7 +25,7 @@ import torch.optim as optim
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", type=int, default=100, help="number of epochs")
-    parser.add_argument("--batch_size", type=int, default=8, help="size of each image batch")
+    parser.add_argument("--batch_size", type=int, default=4, help="size of each image batch")
     parser.add_argument("--gradient_accumulations", type=int, default=2, help="number of gradient accums before step")
     parser.add_argument("--model_def", type=str, default="config/yolov3.cfg", help="path to model definition file")
     parser.add_argument("--data_config", type=str, default="config/coco.data", help="path to data config file")
@@ -70,7 +70,12 @@ if __name__ == "__main__":
 
     optimizer = torch.optim.Adam(model.parameters())
 
+    # metric_table = [["Metrics", *[f"YOLO Layer {i}" for i in range(len(model.yolo_layers))]]]
     metrics = ["grid_size", "loss", "x", "y", "w", "h", "conf", "cls", "cls_acc", "recall50", "recall75", "precision", "conf_obj", "conf_noobj", ]
+
+
+    loss_all = []
+    accuracy_all = []
 
     for epoch in range(opt.epochs):
         model.train()
@@ -115,8 +120,10 @@ if __name__ == "__main__":
                 # logger.list_of_scalars_summary(tensorboard_log, batches_done)
 
             log_str += AsciiTable(metric_table).table
-            log_str += f"\nTotal loss {loss.item()}"
 
+            log_str += f"\nTotal loss {loss.item()}"
+            # loss_cpu = loss.detach().cpu().numpy()
+            loss_all.append(float(loss.detach().cpu().numpy()))
             # Determine approximate time left for epoch
             epoch_batches_left = len(dataloader) - (batch_i + 1)
             time_left = datetime.timedelta(seconds=epoch_batches_left * (time.time() - start_time) / (batch_i + 1))
@@ -139,5 +146,17 @@ if __name__ == "__main__":
             print(AsciiTable(ap_table).table)
             print(f"---- mAP {AP.mean()}")
 
+            accuracy_all.append(AP.mean())
+
         if epoch % opt.checkpoint_interval == 0:
             torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_%d.pth" % epoch)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(211)
+    ax.plot(loss_all)
+    ax2 = fig.add_subplot(212)
+    ax2.plot(accuracy_all)
+    plt.show(0)
+
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=0
+

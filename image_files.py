@@ -66,14 +66,21 @@ def map_label_filename(image_filename):
 
 def check_image_vs_label_files(image_lists, label_lists):
     counter = 0
+    imagepath_withlabelfiles = []
     for i in range(len(image_lists)):
         label_filename = image_lists[i].replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
         if label_filename not in label_lists:
             print('not exist lebel file == {}'.format(image_lists[i]))
             counter += 1
         else:
-            pass
+            imagepath_withlabelfiles.append(image_lists[i])
+            # pass
     print(f'images without lable file counter = {counter}')
+
+    with open(r'C:\doc\datasets\COCO\images_list_has_coorespondinglabelfiles.csv', 'w+') as f:
+        for i in range(len(imagepath_withlabelfiles)):
+            f.write(imagepath_withlabelfiles[i])
+            f.write('\n')
 
     counter = 0
     aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=0

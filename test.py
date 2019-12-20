@@ -1,6 +1,6 @@
 from __future__ import division
 
-from models import *
+from network import *
 from utils.utils import *
 from utils.datasets import *
 from utils.parse_config import *
@@ -43,11 +43,11 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
         targets[:, 2:] *= img_size
 
         # --------------------------------------------------------------------------------------------------------
-        imagei = imgs.mul(255).byte()
-        imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
-        # image_cpu = cv2.imread('C:/doc/datasets/COCO/images/val2014/COCO_val2014_000000000164.jpg', -1)
-        image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
-        image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
+        # imagei = imgs.mul(255).byte()
+        # imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
+        # # image_cpu = cv2.imread('C:/doc/datasets/COCO/images/val2014/COCO_val2014_000000000164.jpg', -1)
+        # image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
+        # image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
         # --------------------------------------------------------------------------------------------------------
 
         imgs = Variable(imgs.type(Tensor), requires_grad=False)
@@ -58,27 +58,26 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
 
 
         # --------------------------------------------------------------------------------------------------------
-        # for i in range(len(outputs)):
-        output = outputs[0]
-        output_cpu = output.numpy()
-        pred_boxes = output_cpu[:, :4]
-        pred_scores = output_cpu[:, 4]
-        pred_labels = output_cpu[:, -1]
-
-        for i in range(pred_boxes.shape[0]):
-            # if pred_labels[i] == 0 and pred_scores[i]>0.8:
-            if pred_scores[i] > 0.8:
-                pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
-                pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
-                cv2.rectangle(image_cpu, pt1, pt2, (0,255,0),1)
-
-                # target_cpu= targets.numpy()[0]
-                # pt11 = (int(target_cpu[2]), int(target_cpu[3]))
-                # pt22 = (int(target_cpu[4]), int(target_cpu[5]))
-                # cv2. rectangle(image_cpu, pt11, pt22, (255,0,0), 2)
-
-        cv2.imshow("fff", image_cpu)
-        cv2.waitKey(0)
+        # output = outputs[0]
+        # output_cpu = output.numpy()
+        # pred_boxes = output_cpu[:, :4]
+        # pred_scores = output_cpu[:, 4]
+        # pred_labels = output_cpu[:, -1]
+        #
+        # for i in range(pred_boxes.shape[0]):
+        #     # if pred_labels[i] == 0 and pred_scores[i]>0.8:
+        #     if pred_scores[i] > 0.8:
+        #         pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
+        #         pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
+        #         cv2.rectangle(image_cpu, pt1, pt2, (0,255,0),1)
+        #
+        #         # target_cpu= targets.numpy()[0]
+        #         # pt11 = (int(target_cpu[2]), int(target_cpu[3]))
+        #         # pt22 = (int(target_cpu[4]), int(target_cpu[5]))
+        #         # cv2. rectangle(image_cpu, pt11, pt22, (255,0,0), 2)
+        #
+        # cv2.imshow("fff", image_cpu)
+        # cv2.waitKey(0)
         # --------------------------------------------------------------------------------------------------------
 
         sample_metrics += get_batch_statistics(outputs, targets, iou_threshold=iou_thres)
