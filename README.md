@@ -1,10 +1,13 @@
 # YOLO Nano implementation
-This is my implementation of YOLO Nano with Pytorch. If you like it, please star it.
-This repository could be freely used for any purpose. If you like it, please star it.
+This is my implementation of YOLO Nano with Pytorch. 
+This repository could be freely used for any purpose. 
 
-
+<br /><br /><br />
+<H1>  If you like it, please star it.  </>
+<br /><br /><br />
+<br /><br /><br />
 <H1> The code is not finished. Still ongoing </>
-
+<br /><br /><br />
 
 
 ### Introduction
