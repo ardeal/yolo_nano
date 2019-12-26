@@ -1,6 +1,5 @@
 # YOLO Nano implementation with Pytorch
 This is my implementation of YOLO Nano with Pytorch. 
-This repository could be freely used for any purpose. 
 
 <br /><br /><br />
 <H1>  If you like it, please star it. </>
