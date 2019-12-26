@@ -1,14 +1,10 @@
-# YOLO Nano implementation
+# YOLO Nano implementation with Pytorch
 This is my implementation of YOLO Nano with Pytorch. 
 This repository could be freely used for any purpose. 
 
 <br /><br /><br />
-<H1>  If you like it, please star it.  </>
+<H1>  If you like it, please star it. </>
 <br /><br /><br />
-<br /><br /><br />
-<H1> The code is not finished. Still ongoing </>
-<br /><br /><br />
-
 
 ### Introduction
 YOLO Nano paper:
@@ -29,30 +25,23 @@ The performance of YOLO Nano:
 
 
 
-### How to run this code base
+### How to run training code
 0) make sure you have powerfull GPU computer and you are good at Python coding.
 1) git clone  git@github.com:ardeal/yolo_nano.git
 2) install Pytorch and necessary packages
-3) prepare validating images
-......
+3) prepare validating images. Training and validating image and label files are all specified in file config/coco.data. 
+4) customize opt_training.py file according to your environment
+5) run train_yolonano.py
+
+
+
+### How to run this predicting code
+The predicting code is ongoing.
+
+### more information
 
 
 
 
 
 
-### In addition
-1) the model file 
-
-
-
-
-### Time needed to run the code on CPU
-On Windows 10, Intel(R) Xeon(R) W-2123 CPU @ 3.60GHz, 64G memory and SSD, the time needed to run:
-<br>
-for 640*480 input image, the time needed is around 60-70ms
-<br>
-for 320*240 input image, the time needed is around 20-30ms
-<br>
-<br>
-<br>

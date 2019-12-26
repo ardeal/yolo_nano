@@ -1,6 +1,6 @@
 classes= 80
-train=C:/doc/datasets/COCO/images_list_has_coorespondinglabelfiles.csv
-valid=C:/doc/datasets/COCO/images_list_has_coorespondinglabelfiles_patial_for_val.csv
+train=C:/doc/datasets/COCO/images_list_has_coorespondinglabelfiles___all.csv
+valid=C:/doc/datasets/COCO/images_list_has_coorespondinglabelfiles_patial_for_val___all.csv
 names=data/coco.names
 backup=backup/
 eval=coco
