@@ -5,7 +5,7 @@ from utils.logger import *
 from utils.utils import *
 from utils.datasets import *
 from utils.parse_config import *
-from test import evaluate
+from test_yolonano import evaluate
 
 from terminaltables import AsciiTable
 
@@ -30,7 +30,7 @@ import sys
 from network.yolo_nano_network import YOLONano
 # from network.network import *
 
-from opt_training import opt
+from opt import opt
 
 if __name__ == "__main__":
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
                 optimizer.zero_grad()
             loss_all.append(float(loss.detach().cpu().numpy()))
 
-            print('batch_i=={:05d}, lr == {}, loss == {:.3f}'.format(batch_i, opt.lr, float(loss.detach().cpu().numpy())))
+            print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy())))
 
             # ------------------------------------------------------------------------------------------ Log progress
             # log_str = "\n---- [Epoch %d/%d, Batch %d/%d] ----\n" % (epoch, opt.epochs, batch_i, len(dataloader))
