@@ -11,13 +11,13 @@ YOLO Nano paper:
 
 The network structure of YOLO Nano:
 <p align="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/yolo_nano_network_structure.PNG" alt="FaceBoxes Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/yolo_nano_network_structure.PNG" alt="Yolo Nano network structure" width="1024px">
 </p>
 
 
 The performance of YOLO Nano:
 <p align="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/yolonano_vs_tinyyolov2_vs_tinyyolov3.PNG" alt="FaceBoxes Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/yolonano_vs_tinyyolov2_vs_tinyyolov3.PNG" alt="Performance comparison" width="1024px">
 </p>
 
 
@@ -44,7 +44,7 @@ The performance of YOLO Nano:
 1) The code will be further optimized.
 2) Star the code you like is the best respect to the author.
 3) Please ask your questions on the Issues tab on this page or in the QQ group:
-<img src="https://github.com/ardeal/yolo_nano/blob/master/qq_group.jpg" alt="FaceBoxes Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/qq_group.jpg" alt="qq group">
 
 
 
