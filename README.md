@@ -25,19 +25,26 @@ The performance of YOLO Nano:
 
 
 ### How to run training code
-0) make sure you have powerfull GPU computer and you are good at Python coding.
+0) Make sure you have powerfull GPU computer and you are good at Python coding.
 1) git clone  git@github.com:ardeal/yolo_nano.git
-2) install Pytorch and necessary packages
-3) prepare validating images. Training and validating image and label files are all specified in file config/coco.data. 
-4) customize opt_training.py file according to your environment
-5) run train_yolonano.py
+2) Install Pytorch and necessary packages
+3) Prepare validating images. Training and validating image and label files are all specified in file config/coco.data.
+4) Customize opt_training.py file according to your environment
+5) Run train_yolonano.py
 
 
 
 ### How to run this predicting code
-The predicting code is ongoing.
+0) Prepare validating images and corresponding label files. In this code base, the example image and label files are downloaded from COCO.
+1) Make sure the pth file path in test_yolonano.py code is correct.
+2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function to show the image and corresponding algorithms result.
+
 
 ### more information
+1) The code will be further optimized.
+2) Star the code you like is the best respect to the author.
+3) Please ask your questions on the Issues tab on this page or in the QQ group:
+<img src="https://github.com/ardeal/yolo_nano/blob/master/qq_group.jpg" alt="FaceBoxes Performance" width="1024px">
 
 
 
