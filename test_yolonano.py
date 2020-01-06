@@ -21,8 +21,14 @@ import torch.optim as optim
 import cv2
 import copy
 
+from PIL import Image, ImageDraw
+    # as pil
+# import PIL as pil
+
 from network.yolo_nano_network import YOLONano
 from opt import opt
+
+
 
 def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size):
 
@@ -69,6 +75,24 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
         #         cv2.rectangle(image_cpu, pt1, pt2, (0, 255, 0), 1)
         # cv2.imshow("fff", image_cpu)
         # cv2.waitKey(0)
+        # -------------------------------------use PIL functions to draw rect and show image -------------->
+        # image_ndarray = np.squeeze(imgs.cpu())
+        # image = transforms.ToPILImage()(image_ndarray).convert('RGB')
+        # drawimage = ImageDraw.Draw(image)
+        # output = outputs[0]
+        # if output is None:
+        #     continue
+        # output_cpu = output.numpy()
+        # pred_boxes = output_cpu[:, :4]
+        # pred_scores = output_cpu[:, 4]
+        # pred_labels = output_cpu[:, -1]
+        #
+        # for i in range(pred_boxes.shape[0]):
+        #     if pred_scores[i] > 0.5:
+        #         pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
+        #         pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
+        #         drawimage.rectangle((pt1[0], pt1[1], pt2[0], pt2[1]), fill=None, outline='red')
+        # image.show()
         # --------------------------------done--------------------------------------------------------------------
         sample_metrics += get_batch_statistics(outputs, targets, iou_threshold=iou_thres)
         aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa = 0
@@ -91,7 +115,9 @@ if __name__ == "__main__":
     print(opt)
 
     print('cuda is available == {}'.format(torch.cuda.is_available()))
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    opt.cpu_or_gpu = device
 
     os.makedirs("output", exist_ok=True)
     os.makedirs("checkpoints", exist_ok=True)

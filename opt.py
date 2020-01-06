@@ -87,6 +87,8 @@ parser.add_argument("--multiscale_training", default=True, help="allow for multi
 # parser.add_argument("--optimizer", default='Adam', help="optimization function")
 parser.add_argument("--visualize", default=False, help="visualize training intermediate result")
 parser.add_argument("--pth_path", default='C:/doc/code_python/yolo/model_training/yolov3_ckpt_0.pth', help="pth weight file path")
+parser.add_argument("--cpu_or_gpu", default='cpu', help="choose cpu or gpu")
+
 opt = parser.parse_args()
 
 

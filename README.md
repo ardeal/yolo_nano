@@ -29,7 +29,7 @@ The performance of YOLO Nano:
 1) git clone  git@github.com:ardeal/yolo_nano.git
 2) Install Pytorch and necessary packages
 3) Prepare validating images. Training and validating image and label files are all specified in file config/coco.data.
-4) Customize opt_training.py file according to your environment
+4) Customize opt.py file according to your environment
 5) Run train_yolonano.py
 
 
@@ -37,7 +37,7 @@ The performance of YOLO Nano:
 ### How to run this predicting code
 0) Prepare validating images and corresponding label files. In this code base, the example image and label files are downloaded from COCO.
 1) Make sure the pth file path in test_yolonano.py code is correct.
-2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function to show the image and corresponding algorithms result.
+2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function in test_yolonano.py file to show the image and corresponding algorithms result.
 
 
 ### more information
