@@ -36,9 +36,15 @@ The performance of YOLO Nano:
 2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function in test_yolonano.py file to show the image and corresponding algorithms result.
 
 
-### About the pre-trained model (which is being trained at present, and it will be ready in a few weeks.)
---> The size of the model is too big to be shared on github directly.
---> If you are interested in the pre-trained model, please join the QQ group
+### The performance of the trained model based on my code
+will be here soon......
+
+
+
+### About the pre-trained model
+ (which is being trained at present, and it will be ready in a few weeks.)
+The size of the model is too big to be shared on github directly.
+If you are interested in the pre-trained model, please join the QQ group
 
 
 ### More information
