@@ -97,7 +97,10 @@ if __name__ == "__main__":
                 optimizer.zero_grad()
             loss_all.append(float(loss.detach().cpu().numpy()))
 
-            print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy())))
+            if len(accuracy_all) == 0:
+                print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy())))
+            else:
+                print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}, accuracy_all == {}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy()), accuracy_all[(epoch-1)//opt.evaluation_interval]))
 
             # ------------------------------------------------------------------------------------------ Log progress
             # log_str = "\n---- [Epoch %d/%d, Batch %d/%d] ----\n" % (epoch, opt.epochs, batch_i, len(dataloader))
@@ -138,7 +141,7 @@ if __name__ == "__main__":
             print("\n---- Evaluating Model ----")
             # Evaluate the model on the validation set
             precision, recall, AP, f1, ap_class = evaluate(model, path=valid_path, iou_thres=0.5, conf_thres=0.5, nms_thres=0.5, img_size=opt.img_size, batch_size=1, )
-            evaluation_metrics = [ ("val_precision", precision.mean()), ("val_recall", recall.mean()), ("val_mAP", AP.mean()), ("val_f1", f1.mean()), ]
+            # evaluation_metrics = [ ("val_precision", precision.mean()), ("val_recall", recall.mean()), ("val_mAP", AP.mean()), ("val_f1", f1.mean()), ]
             # logger.list_of_scalars_summary(evaluation_metrics, epoch)
             # Print class APs and mAP
             ap_table = [["Index", "Class name", "AP"]]

@@ -102,11 +102,11 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
         true_positives, pred_scores, pred_labels = [np.concatenate(x, 0) for x in list(zip(*sample_metrics))]
         precision, recall, AP, f1, ap_class = ap_per_class(true_positives, pred_scores, pred_labels, labels)
     else:
-        precision = [0.0]
-        recall = [0.0]
-        AP = [0.0]
-        f1 = [0.0]
-        ap_class = np.unique(labels).astype('int32')
+        precision = np.array([0.0, 0])
+        recall = np.array([0.0,0])
+        AP = np.array([0.0,0])
+        f1 = np.array([0.0,0])
+        ap_class = np.array([1,2]) #np.unique(labels).astype('int32')
 
     return precision, recall, AP, f1, ap_class
 

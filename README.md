@@ -1,9 +1,9 @@
 # YOLO Nano implementation with Pytorch
 This is my implementation of YOLO Nano with Pytorch. 
 
-<br /><br /><br />
+<br /><br />
 <H1>  If you like it, please star it. </>
-<br /><br /><br />
+<br /><br />
 
 ### Introduction
 YOLO Nano paper:
@@ -21,9 +21,6 @@ The performance of YOLO Nano:
 </p>
 
 
-
-
-
 ### How to run training code
 0) Make sure you have powerfull GPU computer and you are good at Python coding.
 1) git clone  git@github.com:ardeal/yolo_nano.git
@@ -33,14 +30,18 @@ The performance of YOLO Nano:
 5) Run train_yolonano.py
 
 
-
 ### How to run this predicting code
 0) Prepare validating images and corresponding label files. In this code base, the example image and label files are downloaded from COCO.
 1) Make sure the pth file path in test_yolonano.py code is correct.
 2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function in test_yolonano.py file to show the image and corresponding algorithms result.
 
 
-### more information
+### About the pre-trained model (which is being trained at present, and it will be ready in a few weeks.)
+--> The size of the model is too big to be shared on github directly.
+--> If you are interested in the pre-trained model, please join the QQ group
+
+
+### More information
 1) The code will be further optimized.
 2) Star the code you like is the best respect to the author.
 3) Please ask your questions on the Issues tab on this page or in the QQ group:
