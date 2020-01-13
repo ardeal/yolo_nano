@@ -40,24 +40,24 @@ The performance of YOLO Nano:
 
 ## The performance of the trained model based on my code
 <p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg" alt="Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg" alt="Performance">
 </p>
 
 <p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg" alt="Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg" alt="Performance">
 </p>
 
 <p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg" alt="Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg" alt="Performance">
 </p>
 
 <p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg" alt="Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg" alt="Performance">
 </p>
 
 
 <p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg" alt="Performance" width="1024px">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg" alt="Performance">
 </p>
 
 
