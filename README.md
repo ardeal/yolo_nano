@@ -36,35 +36,22 @@ The performance of YOLO Nano:
 2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function in test_yolonano.py file to show the image and corresponding algorithms result.
 
 
-
-
 ## The performance of the trained model based on my code
-<p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg" alt="Performance">
-</p>
 
-<p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg" alt="Performance">
-</p>
-
-<p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg" alt="Performance">
-</p>
-
-<p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg" alt="Performance">
-</p>
-
-
-<p align="left" float="left">
-<img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg" alt="Performance">
-</p>
+<center class="half">
+    <img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_19.jpg"/>
+</center>
+<center class="half">
+    <img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg"/>
+</center>
+<center class="half">
+    <img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg"/>
+</center>
 
 
 ## About the pre-trained model
- (which is being trained at present, and it will be ready in a few weeks.)
 The size of the model is too big to be shared on github directly.
-If you are interested in the pre-trained model, please join the QQ group
+If you are interested in the pre-trained model, please join the QQ group.
 
 
 ## More information
