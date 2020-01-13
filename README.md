@@ -39,7 +39,13 @@ The performance of YOLO Nano:
 ## The performance of the trained model based on my code
 <p float="left">
 	<img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_19.jpg"/>
+</p>
+
+<p float="left">
 	<img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg"/>
+</p>
+
+<p float="left">
 	<img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg"/><img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg"/>
 </p>
 
