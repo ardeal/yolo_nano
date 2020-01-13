@@ -40,6 +40,7 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
 
     labels = []
     sample_metrics = []  # List of tuples (TP, confs, pred)
+    counter = 0
     for batch_i, (_, imgs, targets) in enumerate(tqdm.tqdm(dataloader, desc="Detecting objects")):
 
         # Extract labels
@@ -49,10 +50,10 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
         targets[:, 2:] *= img_size
 
         # ------------------------------------show image and result -------------------------------------------------------
-        # imagei = imgs.mul(255).byte()
-        # imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
-        # image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
-        # image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
+        imagei = imgs.mul(255).byte()
+        imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
+        image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
+        image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
         # --------------------------------done--------------------------------------------------------------------
 
         imgs = Variable(imgs.type(Tensor), requires_grad=False)
@@ -60,21 +61,26 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
             outputs = model(imgs)
             outputs = non_max_suppression(outputs, conf_thres=conf_thres, nms_thres=nms_thres)
         # ------------------------------------show image and result -------------------------------------------------------
-        # output = outputs[0]
-        # if output is None:
-        #     continue
-        # output_cpu = output.numpy()
-        # pred_boxes = output_cpu[:, :4]
-        # pred_scores = output_cpu[:, 4]
-        # pred_labels = output_cpu[:, -1]
-        #
-        # for i in range(pred_boxes.shape[0]):
-        #     if pred_scores[i] > 0.5:
-        #         pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
-        #         pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
-        #         cv2.rectangle(image_cpu, pt1, pt2, (0, 255, 0), 1)
-        # cv2.imshow("fff", image_cpu)
-        # cv2.waitKey(0)
+        output = outputs[0]
+        if output is None:
+            continue
+        output_cpu = output.numpy()
+        pred_boxes = output_cpu[:, :4]
+        pred_scores = output_cpu[:, 4]
+        pred_labels = output_cpu[:, -1]
+
+        for i in range(pred_boxes.shape[0]):
+            if pred_scores[i] > 0.5:
+                pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
+                pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
+                cv2.rectangle(image_cpu, pt1, pt2, (0, 255, 0), 1)
+        cv2.imshow("fff", image_cpu)
+        counter += 1
+        imagename = 'image_{}.jpg'.format(counter)
+        savedimagepath = os.path.join(r'C:\doc\code_python\yolo\yolo_nano\images_output', imagename)
+        cv2.imwrite(savedimagepath, image_cpu)
+        cv2.waitKey(0)
+
         # -------------------------------------use PIL functions to draw rect and show image -------------->
         # image_ndarray = np.squeeze(imgs.cpu())
         # image = transforms.ToPILImage()(image_ndarray).convert('RGB')

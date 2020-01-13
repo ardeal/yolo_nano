@@ -19,7 +19,7 @@ parser.set_defaults(no_cuda=False)
 
 parser.add_argument("--num_threads", type=int, default=8, help="# of cpu threads to use for batch generation")
 parser.add_argument("--dataset", default="coco", help="specify the type of custom dataset to create")
-parser.add_argument("--checkpoint_interval", type=int, default=10, help="interval between saving model weights")
+parser.add_argument("--checkpoint_interval", type=int, default=3, help="interval between saving model weights")
 parser.add_argument("--val_interval", type=int, default=5, help="evaluation every 5 epochs")
 
 parser.add_argument("--model", type=str, default="yolo_nano", help="choose which model to use")
@@ -86,7 +86,7 @@ parser.add_argument("--compute_map", default=False, help="if True computes mAP e
 parser.add_argument("--multiscale_training", default=True, help="allow for multi-scale training")
 # parser.add_argument("--optimizer", default='Adam', help="optimization function")
 parser.add_argument("--visualize", default=False, help="visualize training intermediate result")
-parser.add_argument("--pth_path", default='C:/doc/code_python/yolo/model_training/yolov3_ckpt_0.pth', help="pth weight file path")
+parser.add_argument("--pth_path", default='C:/doc/code_python/yolo/model_training/yolov3_ckpt_20.pth', help="pth weight file path")
 parser.add_argument("--cpu_or_gpu", default='cpu', help="choose cpu or gpu")
 
 opt = parser.parse_args()

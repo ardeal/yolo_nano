@@ -23,7 +23,7 @@ The performance of YOLO Nano:
 
 ## How to run training code
 0) Make sure you have powerfull GPU computer and you are good at Python coding.
-1) $ git clone  git@github.com:ardeal/yolo_nano.git
+1) ```git clone  git@github.com:ardeal/yolo_nano.git```
 2) Install Pytorch and necessary packages
 3) Prepare validating images. Training and validating image and label files are all specified in file config/coco.data.
 4) Customize opt.py file according to your environment
@@ -36,9 +36,29 @@ The performance of YOLO Nano:
 2) The evaluate function in test_yolonano.py file is the main code of validating. Uncomment out code in evaluate function in test_yolonano.py file to show the image and corresponding algorithms result.
 
 
-## The performance of the trained model based on my code
-will be here soon......
 
+
+## The performance of the trained model based on my code
+<p align="left" float="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_16.jpg" alt="Performance" width="1024px">
+</p>
+
+<p align="left" float="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_23.jpg" alt="Performance" width="1024px">
+</p>
+
+<p align="left" float="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_60.jpg" alt="Performance" width="1024px">
+</p>
+
+<p align="left" float="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_73.jpg" alt="Performance" width="1024px">
+</p>
+
+
+<p align="left" float="left">
+<img src="https://github.com/ardeal/yolo_nano/blob/master/image_81.jpg" alt="Performance" width="1024px">
+</p>
 
 
 ## About the pre-trained model

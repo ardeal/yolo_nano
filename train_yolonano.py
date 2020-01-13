@@ -100,7 +100,7 @@ if __name__ == "__main__":
             if len(accuracy_all) == 0:
                 print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy())))
             else:
-                print('epoch == {:04d}, batch_i=={:05d}, lr == {}, loss == {:.3f}, accuracy_all == {}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy()), accuracy_all[(epoch-1)//opt.evaluation_interval]))
+                print('epoch == {:03d}, batch_i=={:05d}, lr == {}, loss == {:.3f}, accuracy_all == {:.4f}'.format(epoch, batch_i, opt.lr, float(loss.detach().cpu().numpy()), accuracy_all[(epoch-1)//opt.evaluation_interval]))
 
             # ------------------------------------------------------------------------------------------ Log progress
             # log_str = "\n---- [Epoch %d/%d, Batch %d/%d] ----\n" % (epoch, opt.epochs, batch_i, len(dataloader))
