@@ -31,7 +31,7 @@ parser.add_argument("--batch_size", type=int, default=4, help="batch size")
 parser.add_argument('--gradient_accumulations', type=int, default=2, help="number of gradient accums before step")
 
 parser.add_argument("--optimizer", type=str, default="Adam", help="optimizer (Adam | SGD | AdaBound)")
-parser.add_argument('--lr', type=float, default=1e-4, help="learning rate")
+parser.add_argument('--lr', type=float, default=1e-3, help="learning rate")
 parser.add_argument('--momentum', type=float, default=0.9, help="momentum for optimizer")
 parser.add_argument('--weight_decay', type=float, default=1e-3, help="weight_decay for optimizer")
 parser.add_argument('--final_lr', type=float, default=0.1, help="final learning rate used by AdaBound optimizer")
@@ -83,10 +83,15 @@ parser.add_argument("--img_size", type=int, default=416, help="size of each imag
 # parser.add_argument("--checkpoint_interval", type=int, default=1, help="interval between saving model weights")
 parser.add_argument("--evaluation_interval", type=int, default=2, help="interval evaluations on validation set")
 parser.add_argument("--compute_map", default=False, help="if True computes mAP every tenth batch")
-parser.add_argument("--multiscale_training", default=True, help="allow for multi-scale training")
+parser.add_argument("--multiscale_training", default=False, help="allow for multi-scale training")
 # parser.add_argument("--optimizer", default='Adam', help="optimization function")
 parser.add_argument("--visualize", default=False, help="visualize training intermediate result")
-parser.add_argument("--pth_path", default='C:/doc/code_python/yolo/model_training/yolov3_ckpt_20.pth', help="pth weight file path")
+# parser.add_argument("--pth_path", default='C:/doc/code_python/yolo/model_training/yolov3_ckpt_20.pth', help="pth weight file path")
+# parser.add_argument("--pth_path", default=r'C:\doc\code_python\yolo\model_training\yolov3_ckpt_51.pth', help="pth weight file path")
+parser.add_argument("--pth_path", default=r"C:\doc\code_python\yolo\model_training\yolov3_ckpt_6-lr00001_nonmultiscale.pth", help="pth weight file path")
+
+
+
 parser.add_argument("--cpu_or_gpu", default='cpu', help="choose cpu or gpu")
 
 opt = parser.parse_args()

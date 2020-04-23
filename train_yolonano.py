@@ -61,6 +61,7 @@ if __name__ == "__main__":
     # Get dataloader
     dataset = ListDataset(train_path, augment=True, multiscale=opt.multiscale_training)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=opt.batch_size, shuffle=True, num_workers=opt.n_cpu, pin_memory=True, collate_fn=dataset.collate_fn,)
+    # dataloader = torch.utils.data.DataLoader(dataset, batch_size=opt.batch_size, shuffle=False, num_workers=opt.n_cpu, pin_memory=True, collate_fn=dataset.collate_fn, )
 
     # optimizer = torch.optim.Adam(model.parameters())
     if opt.optimizer == 'Adam':
@@ -154,6 +155,8 @@ if __name__ == "__main__":
 
         if epoch % opt.checkpoint_interval == 0:
             torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_%d.pth" % epoch)
+            torch.save(model, f"checkpoints/yolov3_ckpt_graph_%d.pth" % epoch)
+            aaaaaaaaaaaaa=0
 
     fig = plt.figure()
     ax = fig.add_subplot(211)

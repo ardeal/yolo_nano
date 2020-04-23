@@ -61,13 +61,13 @@ class EP(nn.Module):
         self.input_channels = input_channels
         self.output_channels = output_channels
         self.stride = stride
-        self.use_res_connect = self.stride == 1 and input_channels == output_channels
+        # self.use_res_connect = self.stride == 1 and input_channels == output_channels
 
         self.sepconv = sepconv3x3(input_channels, output_channels, stride=stride)
         
     def forward(self, x):
-        if self.use_res_connect:
-            return x + self.sepconv(x)
+        # if self.use_res_connect:
+        #     return x + self.sepconv(x)
         
         return self.sepconv(x)
 
@@ -77,7 +77,7 @@ class PEP(nn.Module):
         self.input_channels = input_channels
         self.output_channels = output_channels
         self.stride = stride
-        self.use_res_connect = self.stride == 1 and input_channels == output_channels
+        # self.use_res_connect = self.stride == 1 and input_channels == output_channels
 
         self.conv = conv1x1(input_channels, x)
         self.sepconv = sepconv3x3(x, output_channels, stride=stride)
@@ -85,8 +85,8 @@ class PEP(nn.Module):
     def forward(self, x):        
         out = self.conv(x)
         out = self.sepconv(out)
-        if self.use_res_connect:
-            return out + x
+        # if self.use_res_connect:
+        #     return out + x
 
         return out
 

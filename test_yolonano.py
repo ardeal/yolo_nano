@@ -28,7 +28,7 @@ from PIL import Image, ImageDraw
 from network.yolo_nano_network import YOLONano
 from opt import opt
 
-
+import datetime
 
 def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size):
 
@@ -49,38 +49,59 @@ def evaluate(model, path, iou_thres, conf_thres, nms_thres, img_size, batch_size
         targets[:, 2:] = xywh2xyxy(targets[:, 2:])
         targets[:, 2:] *= img_size
 
-        # ------------------------------------show image and result -------------------------------------------------------
-        # imagei = imgs.mul(255).byte()
-        # imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
-        # image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
-        # image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
-        # --------------------------------done--------------------------------------------------------------------
+        """
+        # ------------------------------------use opencv to show image and result -------------------------------------------------------
+        imagei = imgs.mul(255).byte()
+        imagei = imagei.cpu().numpy().squeeze(0).transpose((1, 2, 0))
+        image_cpu = copy.deepcopy(np.array(imagei).astype(np.uint8)) #copy.deepcopy(imagei)
+        image_cpu = cv2.cvtColor(np.asarray(image_cpu), cv2.COLOR_RGB2BGR)
+
+        # --------show image and ground truth(label) to confirm whether the label and label format is correct or no --------------------------
+        image_tt = copy.deepcopy(image_cpu)
+        for i in range(len(targets)):
+            pt1 = (int(targets[i][2].numpy()), int(targets[i][3].numpy()))
+            pt2 = (int(targets[i][4].numpy()), int(targets[i][5].numpy()))
+            cv2.rectangle(image_tt, pt1, pt2, (0, 0, 255), 1)
+        cv2.imshow("ground truth", image_tt)
+        # cv2.waitKey(0)
+        """
+        # --------------------------------done----------------------------------------------outputs[..., 5:].detach().cpu().numpy()----------------------
 
         imgs = Variable(imgs.type(Tensor), requires_grad=False)
+
+        # t0 = datetime.datetime.utcnow()
         with torch.no_grad():
             outputs = model(imgs)
             outputs = non_max_suppression(outputs, conf_thres=conf_thres, nms_thres=nms_thres)
-        # ------------------------------------show image and result -------------------------------------------------------
-        # output = outputs[0]
-        # if output is None:
-        #     continue
-        # output_cpu = output.numpy()
-        # pred_boxes = output_cpu[:, :4]
-        # pred_scores = output_cpu[:, 4]
-        # pred_labels = output_cpu[:, -1]
-        #
-        # for i in range(pred_boxes.shape[0]):
-        #     if pred_scores[i] > 0.5:
-        #         pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
-        #         pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
-        #         cv2.rectangle(image_cpu, pt1, pt2, (0, 255, 0), 1)
-        # cv2.imshow("fff", image_cpu)
-        # counter += 1
-        # imagename = 'image_{}.jpg'.format(counter)
-        # savedimagepath = os.path.join(r'C:\doc\code_python\yolo\yolo_nano\images_output', imagename)
-        # cv2.imwrite(savedimagepath, image_cpu)
-        # cv2.waitKey(0)
 
+        # t1 = datetime.datetime.utcnow()
+        # tt = t1 - t0
+        # tum = tt.seconds * 1000000 + tt.microseconds
+        # print()
+        # print('time needed for 1 image == {:.5f} ms'.format(tum))
+
+        """
+        # ------------------------------------use opencv to show image and result -------------------------------------------------------
+        output = outputs[0]
+        if output is None:
+            continue
+        output_cpu = output.numpy()
+        pred_boxes = output_cpu[:, :4]
+        pred_scores = output_cpu[:, 4]
+        pred_labels = output_cpu[:, -1]
+
+        for i in range(pred_boxes.shape[0]):
+            if pred_scores[i] > 0.5:
+                pt1 = (int(pred_boxes[i][0]), int(pred_boxes[i][1]))
+                pt2 = (int(pred_boxes[i][2]), int(pred_boxes[i][3]))
+                cv2.rectangle(image_cpu, pt1, pt2, (0, 255, 0), 1)
+        cv2.imshow("predicting output", image_cpu)
+        counter += 1
+        imagename = 'image_{}.jpg'.format(counter)
+        savedimagepath = os.path.join(r'C:\doc\code_python\yolo\yolo_nano\images_output', imagename)
+        # cv2.imwrite(savedimagepath, image_cpu)
+        cv2.waitKey(0)
+        """
         # -------------------------------------use PIL functions to draw rect and show image -------------->
         # image_ndarray = np.squeeze(imgs.cpu())
         # image = transforms.ToPILImage()(image_ndarray).convert('RGB')
