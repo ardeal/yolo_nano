@@ -65,6 +65,7 @@ if __name__ == '__main__':
 
     # -----------------------------------------------------
     # input_pth = r"C:\doc\code_python\yolo\yolo_nano\checkpoints_le10e-3_bs4\yolov3_ckpt_20.pth"
+    # input_pth = r"C:\doc\code_python\yolo\yolo_nano\checkpoints\yolov3_ckpt_0.pth"
     input_pth = r"C:\doc\code_python\yolo\yolo_nano\checkpoints\yolov3_ckpt_0.pth"
     outfilename = 'yolo_nano_' + datetime.datetime.now().strftime('%Y%m%d%H%M%S_%f') + '.onnx'
 

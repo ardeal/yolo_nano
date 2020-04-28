@@ -141,7 +141,7 @@ if __name__ == "__main__":
         if epoch % opt.evaluation_interval == 0:
             print("\n---- Evaluating Model ----")
             # Evaluate the model on the validation set
-            precision, recall, AP, f1, ap_class = evaluate(model, path=valid_path, iou_thres=0.5, conf_thres=0.5, nms_thres=0.5, img_size=opt.img_size, batch_size=1, )
+            precision, recall, AP, f1, ap_class = evaluate(model, path=valid_path, iou_thres=0.5, conf_thres=0.5, nms_thres=0.5, img_size=opt.image_size, batch_size=1, )
             # evaluation_metrics = [ ("val_precision", precision.mean()), ("val_recall", recall.mean()), ("val_mAP", AP.mean()), ("val_f1", f1.mean()), ]
             # logger.list_of_scalars_summary(evaluation_metrics, epoch)
             # Print class APs and mAP
@@ -155,7 +155,7 @@ if __name__ == "__main__":
 
         if epoch % opt.checkpoint_interval == 0:
             torch.save(model.state_dict(), f"checkpoints/yolov3_ckpt_%d.pth" % epoch)
-            torch.save(model, f"checkpoints/yolov3_ckpt_graph_%d.pth" % epoch)
+            # torch.save(model, f"checkpoints/yolov3_ckpt_graph_%d.pth" % epoch)
             aaaaaaaaaaaaa=0
 
     fig = plt.figure()
